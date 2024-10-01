@@ -1,0 +1,12 @@
+clear all;
+close all;
+clc; 
+
+L = imread("normalLung.png"); %Load image
+
+%Step 1, find the mean
+xRayArithmeticMean = mean2(L);
+disp(['Arithmetic Mean: ' num2str(xRayArithmeticMean)]);
+
+%Step 2, subtract the mean
+Lsubtracted = L - xRayArithmeticMean;

@@ -1,0 +1,6 @@
+clear all;
+close all;
+clc; 
+
+L = imread("f.bmp"); %Load image
+L2 = imread("traffic2.bmp"); %Load image

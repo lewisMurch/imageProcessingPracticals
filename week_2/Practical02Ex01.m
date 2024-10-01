@@ -1,0 +1,20 @@
+clear all;
+close all;
+clc; 
+
+NT = uigetfile('*.bmp');
+imshow(NT)
+[jPoints,iPoints] = getpts();
+
+ai = iPoints(1);
+aj = jPoints(1);
+bi = iPoints(2);
+bj = jPoints(2);
+
+dCityBlock = abs(ai - bi) + abs(aj - bj);
+dChessboard = max(abs(ai - bi), abs(aj - bj));
+dEuclidean = sqrt((ai - bi)^2 + (aj - bj)^2);
+
+disp(['City Block Distance: ' num2str(dCityBlock)]);
+disp(['Chess Board Distance: ' num2str(dChessboard)]);
+disp(['Euclidean Distance: ' num2str(dEuclidean)]);
