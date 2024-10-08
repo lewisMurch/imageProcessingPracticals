@@ -1,0 +1,35 @@
+clear all;
+close all;
+clc;
+
+% Load or create a sample image for demonstration
+L = imread('mythicalCreatures.bmp');  % Replace 'your_image.png' with the image you want to process
+
+selection = menu('Threshold type?', 'low pass', 'high pass', 'band pass', 'band reject');
+
+switch(selection)
+    case 1  % Low pass
+        T = input('Enter T1: ');
+        B = L <= T;  % low pass
+    case 2  % High pass
+        T = input('Enter T1: ');
+        B = L >= T;  % high pass
+    case 3  % Band pass
+        T1 = input('Enter T1: ');
+        T2 = input('Enter T2: ');
+        B = L >= T1 & L <= T2;  % band pass
+    case 4  % Band reject
+        T1 = input('Enter T1: ');
+        T2 = input('Enter T2: ');
+        B = L <= T1 | L >= T2;  % band reject
+end
+
+% Display the original and the thresholded images
+figure;
+subplot(1, 2, 1);
+imshow(L);
+title('Original Image');
+
+subplot(1, 2, 2);
+imshow(B);
+title('Thresholded Image');
