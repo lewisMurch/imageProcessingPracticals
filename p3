@@ -1,0 +1,35 @@
+clear all;
+close all;
+clc; 
+
+L = imread("greyTestImage.bmp");
+imhist(L);
+[M, N, C] = size(L);
+num_pixels = M * N;
+
+H_count = imhist(L);
+figure;
+bar(0:255, H_count, 'r');
+xlabel('Grey Level', 'FontSize', 14);
+ylabel('Count', 'FontSize',14);
+xlim([0 255]);
+ylim([0 max(H_count)]);
+axis square;
+
+% Compute the histogram
+H_normCount = H_count / num_pixels;
+
+% Create a figure for the normalized histogram
+figure;
+bar(0:255, H_normCount, 'r');
+
+% Labeling the axes
+xlabel('Grey Level', 'FontSize', 14);
+ylabel('Normalized Count', 'FontSize', 14);
+
+% Set limits for x and y axes
+xlim([0 255]);
+ylim([0 max(H_normCount)]);
+
+% Set axis to square for better visual representation
+axis square;
