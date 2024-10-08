@@ -1,0 +1,29 @@
+clear all;
+close all;
+clc; 
+
+L = imread("greyTestImage.bmp");
+imhist(L);
+[M, N, C] = size(L);
+num_pixels = M * N;
+
+H_count = imhist(L);
+figure;
+bar(0:255, H_count, 'r');
+xlabel('Grey Level', 'FontSize', 14);
+ylabel('Count', 'FontSize',14);
+xlim([0 255]);
+ylim([0 max(H_count)]);
+axis square;
+
+for index = 1:256
+  H_cumul(index) = sum(H_count(1:index));
+end
+
+figure;
+bar(0:255, H_cumul, 'r');
+xlabel('Grey Level', 'FontSize', 14);
+ylabel('Count', 'FontSize',14);
+xlim([0 255]);
+ylim([0 max(H_cumul)]);
+axis square;
