@@ -1,0 +1,17 @@
+clear all;
+close all;
+clc; 
+
+RGB = imread("Dolls.jpeg");
+RGB = im2double(RGB); %So we do not lose accuracy
+
+
+[M, N, C] = size(RGB);
+
+for i=1:M
+  for j=1:N
+    Llight(i,j)=(max([RGB(i,j,1), RGB(i,j,2), RGB(i,j,3)]) + min([RGB(i,j,1), RGB(i,j,2), RGB(i,j,3)]) )/2;
+  end
+end
+
+imshow(Llight);
