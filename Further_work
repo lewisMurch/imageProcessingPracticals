@@ -1,0 +1,20 @@
+clear all;
+close all;
+clc;
+
+P = imread("Pokemon.bmp"); % Pokemon, foreground
+C = imread("ARU.bmp"); % Campus, background
+
+PT = 253; % Pokémon threshold
+
+% Create the binary mask for the Pokemon
+PB = P <= PT; % Pokemon Binary mask based on the threshold
+
+% Create an inverted mask for the background
+PB_inverted = ~PB;
+
+% Place the Pokemon on the background using the mask
+C_blended = uint8(P .* uint8(PB) + C .* uint8(PB_inverted));
+
+% Display the result
+imshow(C_blended);
