@@ -1,0 +1,35 @@
+clear all;
+close all;
+clc; 
+
+L = imread("BrainTumour.bmp");
+
+T = input("Choose a value for the threshold");
+
+[M, N, C] = size(L);
+
+for i=1:M
+  for j=1:N
+    if L(i, j) >= T
+      B(i,j)= 1;
+    end
+    if L(i, j) < T
+      B(i,j)= 0;
+    end
+  end
+end
+
+B2 = imbinarize(L);
+
+figure;
+subplot(1,3,1); % matrix of 1 row 2 columns, go to number 1 of the 2 positions
+imshow(L);
+title('Greyscale Image');
+
+subplot(1,3,2); % matrix of 1 row 2 columns, go to number 2 of the 2 positions
+imshow(B);
+title('Binary Image');
+
+subplot(1,3,3); 
+imshow(B2);
+title('Binary Image 2');
